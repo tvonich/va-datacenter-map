@@ -1,7 +1,7 @@
 <script>
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount } from 'svelte';
   import maplibregl from 'maplibre-gl';
-  import { selectedYear, visibleDatacenters, pricing, hoveredDatacenter, hoveredRegion, selectedRegion, mapLoaded } from '../stores.js';
+  import { selectedYear, visibleDatacenters, datacenters, pricing, hoveredDatacenter, hoveredRegion, selectedRegion, mapLoaded } from '../stores.js';
   import { REGION_COLORS, getRegionOpacity, createSizeScale } from '../utils/colors.js';
   import { getUtilityPrice } from '../utils/data.js';
 
@@ -10,9 +10,8 @@
   let mapContainer;
   let map;
   const sizeScale = createSizeScale();
+  let prevYear = null;
 
-  // Virginia bounds
-  const VA_BOUNDS = [[-83.68, 36.54], [-75.17, 39.47]];
   const VA_CENTER = [-78.85, 37.93];
 
   onMount(() => {
@@ -20,6 +19,7 @@
       container: mapContainer,
       style: {
         version: 8,
+        glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
         sources: {
           'carto-dark': {
             type: 'raster',
@@ -60,11 +60,8 @@
   function addLayers() {
     if (!counties || !map) return;
 
-    // County fill layer (utility regions)
-    map.addSource('counties', {
-      type: 'geojson',
-      data: counties,
-    });
+    // --- County fill layers (utility regions) ---
+    map.addSource('counties', { type: 'geojson', data: counties });
 
     map.addLayer({
       id: 'county-fill',
@@ -86,7 +83,6 @@
       },
     });
 
-    // Region borders (thicker lines between different utility territories)
     map.addLayer({
       id: 'region-border',
       type: 'line',
@@ -98,27 +94,82 @@
       },
     });
 
-    // Datacenter markers
+    // --- Datacenter source with clustering ---
     map.addSource('datacenters', {
       type: 'geojson',
-      data: buildDatacenterGeoJSON($visibleDatacenters),
+      data: buildDatacenterGeoJSON($visibleDatacenters, $selectedYear),
+      cluster: true,
+      clusterMaxZoom: 11,
+      clusterRadius: 50,
     });
 
+    // Cluster circles
+    map.addLayer({
+      id: 'dc-clusters',
+      type: 'circle',
+      source: 'datacenters',
+      filter: ['has', 'point_count'],
+      paint: {
+        'circle-color': [
+          'step', ['get', 'point_count'],
+          'rgba(34, 211, 238, 0.6)',   // < 10
+          10, 'rgba(34, 211, 238, 0.7)', // 10-29
+          30, 'rgba(34, 211, 238, 0.8)', // 30-49
+          50, 'rgba(59, 130, 246, 0.85)', // 50+
+        ],
+        'circle-radius': [
+          'step', ['get', 'point_count'],
+          16,    // < 10
+          10, 22, // 10-29
+          30, 28, // 30-49
+          50, 34, // 50+
+        ],
+        'circle-stroke-width': 2,
+        'circle-stroke-color': 'rgba(34, 211, 238, 0.25)',
+        'circle-opacity-transition': { duration: 300 },
+        'circle-radius-transition': { duration: 300 },
+      },
+    });
+
+    // Cluster count labels
+    map.addLayer({
+      id: 'dc-cluster-count',
+      type: 'symbol',
+      source: 'datacenters',
+      filter: ['has', 'point_count'],
+      layout: {
+        'text-field': '{point_count_abbreviated}',
+        'text-font': ['Open Sans Bold'],
+        'text-size': 12,
+        'text-allow-overlap': true,
+      },
+      paint: {
+        'text-color': '#ffffff',
+      },
+    });
+
+    // Glow layer for unclustered markers
     map.addLayer({
       id: 'dc-glow',
       type: 'circle',
       source: 'datacenters',
+      filter: ['!', ['has', 'point_count']],
       paint: {
         'circle-radius': ['*', ['get', 'radius'], 1.8],
         'circle-color': 'rgba(255, 255, 255, 0.06)',
         'circle-blur': 1,
+        'circle-opacity': ['case', ['get', 'fresh'], 0, 1],
+        'circle-opacity-transition': { duration: 400 },
+        'circle-radius-transition': { duration: 400 },
       },
     });
 
+    // Individual datacenter markers (unclustered)
     map.addLayer({
       id: 'dc-markers',
       type: 'circle',
       source: 'datacenters',
+      filter: ['!', ['has', 'point_count']],
       paint: {
         'circle-radius': ['get', 'radius'],
         'circle-color': [
@@ -136,10 +187,14 @@
           'planned', 'rgba(100, 116, 139, 0.3)',
           'rgba(255, 255, 255, 0.3)',
         ],
+        // Start fresh markers at 0 opacity; they'll animate in
+        'circle-opacity': ['case', ['get', 'fresh'], 0, 1],
+        'circle-opacity-transition': { duration: 400 },
+        'circle-radius-transition': { duration: 400 },
       },
     });
 
-    // Hover interactions
+    // --- Hover interactions ---
     map.on('mousemove', 'dc-markers', (e) => {
       map.getCanvas().style.cursor = 'pointer';
       if (e.features?.length) {
@@ -161,6 +216,28 @@
       hoveredDatacenter.set(null);
     });
 
+    // Cluster hover
+    map.on('mouseenter', 'dc-clusters', () => {
+      map.getCanvas().style.cursor = 'pointer';
+    });
+    map.on('mouseleave', 'dc-clusters', () => {
+      map.getCanvas().style.cursor = '';
+    });
+
+    // Click cluster to zoom in
+    map.on('click', 'dc-clusters', (e) => {
+      const features = map.queryRenderedFeatures(e.point, { layers: ['dc-clusters'] });
+      if (!features.length) return;
+      const clusterId = features[0].properties.cluster_id;
+      map.getSource('datacenters').getClusterExpansionZoom(clusterId).then((zoom) => {
+        map.easeTo({
+          center: features[0].geometry.coordinates,
+          zoom: zoom + 0.5,
+          duration: 500,
+        });
+      });
+    });
+
     map.on('mousemove', 'county-fill', (e) => {
       if (e.features?.length && !$hoveredDatacenter) {
         const props = e.features[0].properties;
@@ -175,17 +252,16 @@
     });
 
     map.on('mouseleave', 'county-fill', () => {
-      if (!$hoveredDatacenter) {
-        hoveredRegion.set(null);
-      }
+      if (!$hoveredDatacenter) hoveredRegion.set(null);
     });
 
     map.on('click', 'county-fill', (e) => {
       if (e.features?.length) {
-        const props = e.features[0].properties;
-        selectedRegion.set(props.utility || 'dominion');
+        selectedRegion.set(e.features[0].properties.utility || 'dominion');
       }
     });
+
+    prevYear = $selectedYear;
   }
 
   function buildRegionColorExpression() {
@@ -199,7 +275,7 @@
     ];
   }
 
-  function buildDatacenterGeoJSON(dcs) {
+  function buildDatacenterGeoJSON(dcs, currentYear) {
     return {
       type: 'FeatureCollection',
       features: dcs.map(dc => ({
@@ -208,17 +284,44 @@
         properties: {
           ...dc,
           radius: sizeScale(dc.capacity_mw || 5),
+          fresh: prevYear !== null && dc.year_opened > prevYear && dc.year_opened <= currentYear,
         },
       })),
     };
   }
 
-  // React to year changes
+  const STATUS_OPACITY = [
+    'match', ['get', 'status'],
+    'operational', 0.85,
+    'under_construction', 0.85,
+    'planned', 0.6,
+    0.7,
+  ];
+
+  // React to year changes — update source data + animate new markers
   $effect(() => {
     const dcs = $visibleDatacenters;
-    if (map?.getSource('datacenters')) {
-      map.getSource('datacenters').setData(buildDatacenterGeoJSON(dcs));
+    const year = $selectedYear;
+    if (!map?.getSource('datacenters')) return;
+
+    // Phase 1: set paint to hide fresh markers, then update source data
+    // (existing data has no fresh=true features, so this is a no-op until new data lands)
+    if (map.getLayer('dc-markers')) {
+      map.setPaintProperty('dc-markers', 'circle-opacity',
+        ['case', ['==', ['get', 'fresh'], true], 0, STATUS_OPACITY]);
+      map.setPaintProperty('dc-glow', 'circle-opacity',
+        ['case', ['==', ['get', 'fresh'], true], 0, 1]);
     }
+
+    map.getSource('datacenters').setData(buildDatacenterGeoJSON(dcs, year));
+
+    // Phase 2: next frame, set paint to show all — fresh markers transition from 0 to target
+    requestAnimationFrame(() => {
+      if (!map?.getLayer('dc-markers')) return;
+      map.setPaintProperty('dc-markers', 'circle-opacity', STATUS_OPACITY);
+      map.setPaintProperty('dc-glow', 'circle-opacity', 1);
+      prevYear = year;
+    });
   });
 
   // React to pricing/year changes for region opacity
@@ -227,7 +330,6 @@
     const p = $pricing;
     if (!map?.getLayer('county-fill') || !p) return;
 
-    // Build opacity expression based on current year's prices
     const opacities = {};
     for (const key of Object.keys(REGION_COLORS)) {
       const price = getUtilityPrice(p, key, year, 'commercial');
