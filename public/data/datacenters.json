@@ -1,0 +1,1132 @@
+[
+  {
+    "name": "Equinix DC1",
+    "operator": "Equinix",
+    "lat": 39.0438,
+    "lng": -77.4874,
+    "county": "Loudoun",
+    "year_opened": 2000,
+    "capacity_mw": 8,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC2",
+    "operator": "Equinix",
+    "lat": 39.0441,
+    "lng": -77.4868,
+    "county": "Loudoun",
+    "year_opened": 2002,
+    "capacity_mw": 10,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC3",
+    "operator": "Equinix",
+    "lat": 39.0395,
+    "lng": -77.4722,
+    "county": "Loudoun",
+    "year_opened": 2004,
+    "capacity_mw": 8,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC4",
+    "operator": "Equinix",
+    "lat": 39.0435,
+    "lng": -77.4880,
+    "county": "Loudoun",
+    "year_opened": 2005,
+    "capacity_mw": 9,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC5",
+    "operator": "Equinix",
+    "lat": 39.0443,
+    "lng": -77.4876,
+    "county": "Loudoun",
+    "year_opened": 2006,
+    "capacity_mw": 10,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC6",
+    "operator": "Equinix",
+    "lat": 39.0447,
+    "lng": -77.4882,
+    "county": "Loudoun",
+    "year_opened": 2008,
+    "capacity_mw": 12,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC7",
+    "operator": "Equinix",
+    "lat": 38.9198,
+    "lng": -77.2370,
+    "county": "Fairfax",
+    "year_opened": 2003,
+    "capacity_mw": 6,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC8",
+    "operator": "Equinix",
+    "lat": 38.9201,
+    "lng": -77.2365,
+    "county": "Fairfax",
+    "year_opened": 2005,
+    "capacity_mw": 5,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC10",
+    "operator": "Equinix",
+    "lat": 39.0410,
+    "lng": -77.4750,
+    "county": "Loudoun",
+    "year_opened": 2010,
+    "capacity_mw": 12,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC11",
+    "operator": "Equinix",
+    "lat": 39.0449,
+    "lng": -77.4885,
+    "county": "Loudoun",
+    "year_opened": 2012,
+    "capacity_mw": 15,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC12",
+    "operator": "Equinix",
+    "lat": 39.0358,
+    "lng": -77.4668,
+    "county": "Loudoun",
+    "year_opened": 2014,
+    "capacity_mw": 14,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC13",
+    "operator": "Equinix",
+    "lat": 39.0422,
+    "lng": -77.4860,
+    "county": "Loudoun",
+    "year_opened": 2016,
+    "capacity_mw": 12,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC14",
+    "operator": "Equinix",
+    "lat": 38.7520,
+    "lng": -77.4730,
+    "county": "Prince William",
+    "year_opened": 2017,
+    "capacity_mw": 15,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC15",
+    "operator": "Equinix",
+    "lat": 39.0360,
+    "lng": -77.4672,
+    "county": "Loudoun",
+    "year_opened": 2019,
+    "capacity_mw": 15,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC21",
+    "operator": "Equinix",
+    "lat": 39.0425,
+    "lng": -77.4855,
+    "county": "Loudoun",
+    "year_opened": 2021,
+    "capacity_mw": 18,
+    "status": "operational"
+  },
+  {
+    "name": "Equinix DC22",
+    "operator": "Equinix",
+    "lat": 39.0430,
+    "lng": -77.4845,
+    "county": "Loudoun",
+    "year_opened": 2023,
+    "capacity_mw": 20,
+    "status": "operational"
+  },
+  {
+    "name": "Digital Realty ACC7",
+    "operator": "Digital Realty",
+    "lat": 39.0485,
+    "lng": -77.4690,
+    "county": "Loudoun",
+    "year_opened": 2014,
+    "capacity_mw": 42,
+    "status": "operational"
+  },
+  {
+    "name": "Digital Realty IAD12",
+    "operator": "Digital Realty",
+    "lat": 39.0375,
+    "lng": -77.4625,
+    "county": "Loudoun",
+    "year_opened": 2010,
+    "capacity_mw": 18,
+    "status": "operational"
+  },
+  {
+    "name": "Digital Realty IAD14",
+    "operator": "Digital Realty",
+    "lat": 39.0372,
+    "lng": -77.4618,
+    "county": "Loudoun",
+    "year_opened": 2012,
+    "capacity_mw": 14,
+    "status": "operational"
+  },
+  {
+    "name": "Digital Realty IAD24",
+    "operator": "Digital Realty",
+    "lat": 39.0378,
+    "lng": -77.4630,
+    "county": "Loudoun",
+    "year_opened": 2015,
+    "capacity_mw": 12,
+    "status": "operational"
+  },
+  {
+    "name": "Digital Realty IAD35",
+    "operator": "Digital Realty",
+    "lat": 39.0368,
+    "lng": -77.4710,
+    "county": "Loudoun",
+    "year_opened": 2018,
+    "capacity_mw": 36,
+    "status": "operational"
+  },
+  {
+    "name": "Digital Realty IAD36",
+    "operator": "Digital Realty",
+    "lat": 39.0371,
+    "lng": -77.4715,
+    "county": "Loudoun",
+    "year_opened": 2019,
+    "capacity_mw": 30,
+    "status": "operational"
+  },
+  {
+    "name": "Digital Realty IAD37",
+    "operator": "Digital Realty",
+    "lat": 39.0365,
+    "lng": -77.4720,
+    "county": "Loudoun",
+    "year_opened": 2020,
+    "capacity_mw": 28,
+    "status": "operational"
+  },
+  {
+    "name": "Digital Realty IAD38",
+    "operator": "Digital Realty",
+    "lat": 39.0362,
+    "lng": -77.4725,
+    "county": "Loudoun",
+    "year_opened": 2021,
+    "capacity_mw": 32,
+    "status": "operational"
+  },
+  {
+    "name": "Digital Realty IAD56",
+    "operator": "Digital Realty",
+    "lat": 39.0490,
+    "lng": -77.4695,
+    "county": "Loudoun",
+    "year_opened": 2023,
+    "capacity_mw": 48,
+    "status": "operational"
+  },
+  {
+    "name": "Digital Realty ACC9",
+    "operator": "Digital Realty",
+    "lat": 39.0495,
+    "lng": -77.4700,
+    "county": "Loudoun",
+    "year_opened": 2017,
+    "capacity_mw": 36,
+    "status": "operational"
+  },
+  {
+    "name": "QTS Ashburn 1 (Moran)",
+    "operator": "QTS Data Centers",
+    "lat": 39.0325,
+    "lng": -77.4580,
+    "county": "Loudoun",
+    "year_opened": 2015,
+    "capacity_mw": 35,
+    "status": "operational"
+  },
+  {
+    "name": "QTS Ashburn 2",
+    "operator": "QTS Data Centers",
+    "lat": 39.0330,
+    "lng": -77.4590,
+    "county": "Loudoun",
+    "year_opened": 2018,
+    "capacity_mw": 50,
+    "status": "operational"
+  },
+  {
+    "name": "QTS Ashburn 3",
+    "operator": "QTS Data Centers",
+    "lat": 39.0335,
+    "lng": -77.4575,
+    "county": "Loudoun",
+    "year_opened": 2021,
+    "capacity_mw": 75,
+    "status": "operational"
+  },
+  {
+    "name": "QTS Manassas",
+    "operator": "QTS Data Centers",
+    "lat": 38.7480,
+    "lng": -77.4650,
+    "county": "Prince William",
+    "year_opened": 2019,
+    "capacity_mw": 60,
+    "status": "operational"
+  },
+  {
+    "name": "QTS Richmond",
+    "operator": "QTS Data Centers",
+    "lat": 37.5530,
+    "lng": -77.3750,
+    "county": "Henrico",
+    "year_opened": 2010,
+    "capacity_mw": 110,
+    "status": "operational"
+  },
+  {
+    "name": "AWS US-East IAD50",
+    "operator": "Amazon Web Services",
+    "lat": 39.0505,
+    "lng": -77.4830,
+    "county": "Loudoun",
+    "year_opened": 2011,
+    "capacity_mw": 65,
+    "status": "operational"
+  },
+  {
+    "name": "AWS US-East IAD60",
+    "operator": "Amazon Web Services",
+    "lat": 39.0510,
+    "lng": -77.4835,
+    "county": "Loudoun",
+    "year_opened": 2013,
+    "capacity_mw": 80,
+    "status": "operational"
+  },
+  {
+    "name": "AWS US-East IAD71",
+    "operator": "Amazon Web Services",
+    "lat": 39.0515,
+    "lng": -77.4840,
+    "county": "Loudoun",
+    "year_opened": 2015,
+    "capacity_mw": 90,
+    "status": "operational"
+  },
+  {
+    "name": "AWS Sterling IAD10",
+    "operator": "Amazon Web Services",
+    "lat": 39.0055,
+    "lng": -77.4085,
+    "county": "Loudoun",
+    "year_opened": 2014,
+    "capacity_mw": 50,
+    "status": "operational"
+  },
+  {
+    "name": "AWS Manassas IAD11",
+    "operator": "Amazon Web Services",
+    "lat": 38.7545,
+    "lng": -77.4720,
+    "county": "Prince William",
+    "year_opened": 2016,
+    "capacity_mw": 60,
+    "status": "operational"
+  },
+  {
+    "name": "AWS Manassas IAD24",
+    "operator": "Amazon Web Services",
+    "lat": 38.7550,
+    "lng": -77.4715,
+    "county": "Prince William",
+    "year_opened": 2017,
+    "capacity_mw": 55,
+    "status": "operational"
+  },
+  {
+    "name": "AWS Haymarket IAD55",
+    "operator": "Amazon Web Services",
+    "lat": 38.8120,
+    "lng": -77.6350,
+    "county": "Prince William",
+    "year_opened": 2019,
+    "capacity_mw": 100,
+    "status": "operational"
+  },
+  {
+    "name": "AWS Ashburn Campus A",
+    "operator": "Amazon Web Services",
+    "lat": 39.0460,
+    "lng": -77.4910,
+    "county": "Loudoun",
+    "year_opened": 2018,
+    "capacity_mw": 120,
+    "status": "operational"
+  },
+  {
+    "name": "AWS Ashburn Campus B",
+    "operator": "Amazon Web Services",
+    "lat": 39.0465,
+    "lng": -77.4915,
+    "county": "Loudoun",
+    "year_opened": 2020,
+    "capacity_mw": 150,
+    "status": "operational"
+  },
+  {
+    "name": "AWS Ashburn Campus C",
+    "operator": "Amazon Web Services",
+    "lat": 39.0470,
+    "lng": -77.4920,
+    "county": "Loudoun",
+    "year_opened": 2022,
+    "capacity_mw": 150,
+    "status": "operational"
+  },
+  {
+    "name": "AWS Ashburn Campus D",
+    "operator": "Amazon Web Services",
+    "lat": 39.0475,
+    "lng": -77.4925,
+    "county": "Loudoun",
+    "year_opened": 2023,
+    "capacity_mw": 175,
+    "status": "operational"
+  },
+  {
+    "name": "AWS Prince William Campus E",
+    "operator": "Amazon Web Services",
+    "lat": 38.7600,
+    "lng": -77.4780,
+    "county": "Prince William",
+    "year_opened": 2023,
+    "capacity_mw": 120,
+    "status": "operational"
+  },
+  {
+    "name": "AWS Haymarket Expansion",
+    "operator": "Amazon Web Services",
+    "lat": 38.8130,
+    "lng": -77.6340,
+    "county": "Prince William",
+    "year_opened": 2024,
+    "capacity_mw": 200,
+    "status": "under_construction"
+  },
+  {
+    "name": "AWS Sterling Campus F",
+    "operator": "Amazon Web Services",
+    "lat": 39.0060,
+    "lng": -77.4095,
+    "county": "Loudoun",
+    "year_opened": 2024,
+    "capacity_mw": 130,
+    "status": "operational"
+  },
+  {
+    "name": "AWS Spotsylvania County",
+    "operator": "Amazon Web Services",
+    "lat": 38.1850,
+    "lng": -77.6750,
+    "county": "Spotsylvania",
+    "year_opened": 2025,
+    "capacity_mw": 180,
+    "status": "under_construction"
+  },
+  {
+    "name": "Microsoft Azure Leesburg IAD01-1",
+    "operator": "Microsoft",
+    "lat": 39.0980,
+    "lng": -77.5550,
+    "county": "Loudoun",
+    "year_opened": 2016,
+    "capacity_mw": 80,
+    "status": "operational"
+  },
+  {
+    "name": "Microsoft Azure Leesburg IAD01-2",
+    "operator": "Microsoft",
+    "lat": 39.0985,
+    "lng": -77.5545,
+    "county": "Loudoun",
+    "year_opened": 2018,
+    "capacity_mw": 90,
+    "status": "operational"
+  },
+  {
+    "name": "Microsoft Azure Aldie Campus",
+    "operator": "Microsoft",
+    "lat": 38.9720,
+    "lng": -77.5680,
+    "county": "Loudoun",
+    "year_opened": 2020,
+    "capacity_mw": 120,
+    "status": "operational"
+  },
+  {
+    "name": "Microsoft Azure Manassas MNZ01",
+    "operator": "Microsoft",
+    "lat": 38.7530,
+    "lng": -77.4740,
+    "county": "Prince William",
+    "year_opened": 2019,
+    "capacity_mw": 100,
+    "status": "operational"
+  },
+  {
+    "name": "Microsoft Azure Manassas MNZ02",
+    "operator": "Microsoft",
+    "lat": 38.7535,
+    "lng": -77.4745,
+    "county": "Prince William",
+    "year_opened": 2021,
+    "capacity_mw": 110,
+    "status": "operational"
+  },
+  {
+    "name": "Microsoft Azure Bristow Campus",
+    "operator": "Microsoft",
+    "lat": 38.7330,
+    "lng": -77.5410,
+    "county": "Prince William",
+    "year_opened": 2023,
+    "capacity_mw": 150,
+    "status": "operational"
+  },
+  {
+    "name": "Microsoft Azure Loudoun Expansion",
+    "operator": "Microsoft",
+    "lat": 39.0990,
+    "lng": -77.5560,
+    "county": "Loudoun",
+    "year_opened": 2024,
+    "capacity_mw": 140,
+    "status": "under_construction"
+  },
+  {
+    "name": "Microsoft Azure Prince William Expansion",
+    "operator": "Microsoft",
+    "lat": 38.7340,
+    "lng": -77.5420,
+    "county": "Prince William",
+    "year_opened": 2025,
+    "capacity_mw": 180,
+    "status": "under_construction"
+  },
+  {
+    "name": "Google Loudoun DC1",
+    "operator": "Google",
+    "lat": 39.0850,
+    "lng": -77.5250,
+    "county": "Loudoun",
+    "year_opened": 2019,
+    "capacity_mw": 90,
+    "status": "operational"
+  },
+  {
+    "name": "Google Loudoun DC2",
+    "operator": "Google",
+    "lat": 39.0855,
+    "lng": -77.5245,
+    "county": "Loudoun",
+    "year_opened": 2021,
+    "capacity_mw": 100,
+    "status": "operational"
+  },
+  {
+    "name": "Google Loudoun DC3",
+    "operator": "Google",
+    "lat": 39.0860,
+    "lng": -77.5255,
+    "county": "Loudoun",
+    "year_opened": 2024,
+    "capacity_mw": 130,
+    "status": "under_construction"
+  },
+  {
+    "name": "Meta Henrico DC1",
+    "operator": "Meta",
+    "lat": 37.5350,
+    "lng": -77.3250,
+    "county": "Henrico",
+    "year_opened": 2020,
+    "capacity_mw": 60,
+    "status": "operational"
+  },
+  {
+    "name": "Meta Henrico DC2",
+    "operator": "Meta",
+    "lat": 37.5355,
+    "lng": -77.3245,
+    "county": "Henrico",
+    "year_opened": 2021,
+    "capacity_mw": 60,
+    "status": "operational"
+  },
+  {
+    "name": "Meta Henrico DC3",
+    "operator": "Meta",
+    "lat": 37.5360,
+    "lng": -77.3240,
+    "county": "Henrico",
+    "year_opened": 2022,
+    "capacity_mw": 65,
+    "status": "operational"
+  },
+  {
+    "name": "Meta Henrico DC4-5",
+    "operator": "Meta",
+    "lat": 37.5365,
+    "lng": -77.3255,
+    "county": "Henrico",
+    "year_opened": 2023,
+    "capacity_mw": 80,
+    "status": "operational"
+  },
+  {
+    "name": "Meta Henrico Expansion DC6-7",
+    "operator": "Meta",
+    "lat": 37.5340,
+    "lng": -77.3230,
+    "county": "Henrico",
+    "year_opened": 2025,
+    "capacity_mw": 100,
+    "status": "under_construction"
+  },
+  {
+    "name": "CyrusOne Sterling NVA1-3",
+    "operator": "CyrusOne",
+    "lat": 39.0020,
+    "lng": -77.4050,
+    "county": "Loudoun",
+    "year_opened": 2013,
+    "capacity_mw": 42,
+    "status": "operational"
+  },
+  {
+    "name": "CyrusOne Sterling NVA4",
+    "operator": "CyrusOne",
+    "lat": 39.0025,
+    "lng": -77.4045,
+    "county": "Loudoun",
+    "year_opened": 2016,
+    "capacity_mw": 24,
+    "status": "operational"
+  },
+  {
+    "name": "CyrusOne Sterling NVA5-7",
+    "operator": "CyrusOne",
+    "lat": 39.0030,
+    "lng": -77.4060,
+    "county": "Loudoun",
+    "year_opened": 2018,
+    "capacity_mw": 48,
+    "status": "operational"
+  },
+  {
+    "name": "CyrusOne Sterling NVA8",
+    "operator": "CyrusOne",
+    "lat": 39.0035,
+    "lng": -77.4055,
+    "county": "Loudoun",
+    "year_opened": 2020,
+    "capacity_mw": 24,
+    "status": "operational"
+  },
+  {
+    "name": "CyrusOne Sterling NVA9 (Kincora)",
+    "operator": "CyrusOne",
+    "lat": 39.0040,
+    "lng": -77.4070,
+    "county": "Loudoun",
+    "year_opened": 2022,
+    "capacity_mw": 135,
+    "status": "operational"
+  },
+  {
+    "name": "CyrusOne Ashburn ABX-1",
+    "operator": "CyrusOne",
+    "lat": 39.0420,
+    "lng": -77.4850,
+    "county": "Loudoun",
+    "year_opened": 2019,
+    "capacity_mw": 18,
+    "status": "operational"
+  },
+  {
+    "name": "STACK NVA01A (Ashburn)",
+    "operator": "STACK Infrastructure",
+    "lat": 39.0455,
+    "lng": -77.4860,
+    "county": "Loudoun",
+    "year_opened": 2019,
+    "capacity_mw": 36,
+    "status": "operational"
+  },
+  {
+    "name": "STACK NVA02 (Prince William)",
+    "operator": "STACK Infrastructure",
+    "lat": 38.7470,
+    "lng": -77.4640,
+    "county": "Prince William",
+    "year_opened": 2021,
+    "capacity_mw": 420,
+    "status": "operational"
+  },
+  {
+    "name": "STACK NVA05 (Manassas)",
+    "operator": "STACK Infrastructure",
+    "lat": 38.7510,
+    "lng": -77.4660,
+    "county": "Prince William",
+    "year_opened": 2023,
+    "capacity_mw": 84,
+    "status": "operational"
+  },
+  {
+    "name": "STACK NVA06 (Leesburg)",
+    "operator": "STACK Infrastructure",
+    "lat": 39.0870,
+    "lng": -77.5270,
+    "county": "Loudoun",
+    "year_opened": 2023,
+    "capacity_mw": 72,
+    "status": "operational"
+  },
+  {
+    "name": "STACK Stafford STC",
+    "operator": "STACK Infrastructure",
+    "lat": 38.4550,
+    "lng": -77.4200,
+    "county": "Stafford",
+    "year_opened": 2025,
+    "capacity_mw": 300,
+    "status": "under_construction"
+  },
+  {
+    "name": "CloudHQ LC1",
+    "operator": "CloudHQ",
+    "lat": 39.0452,
+    "lng": -77.4900,
+    "county": "Loudoun",
+    "year_opened": 2019,
+    "capacity_mw": 144,
+    "status": "operational"
+  },
+  {
+    "name": "CloudHQ LC2",
+    "operator": "CloudHQ",
+    "lat": 39.0390,
+    "lng": -77.4790,
+    "county": "Loudoun",
+    "year_opened": 2021,
+    "capacity_mw": 88,
+    "status": "operational"
+  },
+  {
+    "name": "CloudHQ LC3",
+    "operator": "CloudHQ",
+    "lat": 39.0456,
+    "lng": -77.4895,
+    "county": "Loudoun",
+    "year_opened": 2022,
+    "capacity_mw": 96,
+    "status": "operational"
+  },
+  {
+    "name": "CloudHQ LC4",
+    "operator": "CloudHQ",
+    "lat": 39.0454,
+    "lng": -77.4905,
+    "county": "Loudoun",
+    "year_opened": 2023,
+    "capacity_mw": 180,
+    "status": "operational"
+  },
+  {
+    "name": "CloudHQ MCC1 (Manassas)",
+    "operator": "CloudHQ",
+    "lat": 38.7460,
+    "lng": -77.5030,
+    "county": "Prince William",
+    "year_opened": 2020,
+    "capacity_mw": 100,
+    "status": "operational"
+  },
+  {
+    "name": "CloudHQ MCC2 (Manassas)",
+    "operator": "CloudHQ",
+    "lat": 38.7465,
+    "lng": -77.5025,
+    "county": "Prince William",
+    "year_opened": 2023,
+    "capacity_mw": 120,
+    "status": "operational"
+  },
+  {
+    "name": "CoreSite VA1 (Reston)",
+    "operator": "CoreSite",
+    "lat": 38.9530,
+    "lng": -77.3650,
+    "county": "Fairfax",
+    "year_opened": 2003,
+    "capacity_mw": 14,
+    "status": "operational"
+  },
+  {
+    "name": "CoreSite VA2 (Reston)",
+    "operator": "CoreSite",
+    "lat": 38.9533,
+    "lng": -77.3645,
+    "county": "Fairfax",
+    "year_opened": 2012,
+    "capacity_mw": 12,
+    "status": "operational"
+  },
+  {
+    "name": "CoreSite VA3 (Reston)",
+    "operator": "CoreSite",
+    "lat": 38.9540,
+    "lng": -77.3590,
+    "county": "Fairfax",
+    "year_opened": 2018,
+    "capacity_mw": 20,
+    "status": "operational"
+  },
+  {
+    "name": "Vantage VA1 (Ashburn I)",
+    "operator": "Vantage Data Centers",
+    "lat": 39.0065,
+    "lng": -77.4180,
+    "county": "Loudoun",
+    "year_opened": 2019,
+    "capacity_mw": 206,
+    "status": "operational"
+  },
+  {
+    "name": "Vantage VA2 (Ashburn II)",
+    "operator": "Vantage Data Centers",
+    "lat": 39.0070,
+    "lng": -77.4100,
+    "county": "Loudoun",
+    "year_opened": 2021,
+    "capacity_mw": 72,
+    "status": "operational"
+  },
+  {
+    "name": "Vantage VA3 (Ashburn III)",
+    "operator": "Vantage Data Centers",
+    "lat": 39.0690,
+    "lng": -77.5150,
+    "county": "Loudoun",
+    "year_opened": 2023,
+    "capacity_mw": 288,
+    "status": "under_construction"
+  },
+  {
+    "name": "Iron Mountain VA-1 (Manassas)",
+    "operator": "Iron Mountain",
+    "lat": 38.7680,
+    "lng": -77.4850,
+    "county": "Prince William",
+    "year_opened": 2017,
+    "capacity_mw": 32,
+    "status": "operational"
+  },
+  {
+    "name": "Iron Mountain VA-2 (Manassas)",
+    "operator": "Iron Mountain",
+    "lat": 38.7683,
+    "lng": -77.4845,
+    "county": "Prince William",
+    "year_opened": 2018,
+    "capacity_mw": 32,
+    "status": "operational"
+  },
+  {
+    "name": "Iron Mountain VA-3 (Manassas)",
+    "operator": "Iron Mountain",
+    "lat": 38.7686,
+    "lng": -77.4840,
+    "county": "Prince William",
+    "year_opened": 2019,
+    "capacity_mw": 36,
+    "status": "operational"
+  },
+  {
+    "name": "Iron Mountain VA-4 (Manassas)",
+    "operator": "Iron Mountain",
+    "lat": 38.7689,
+    "lng": -77.4835,
+    "county": "Prince William",
+    "year_opened": 2020,
+    "capacity_mw": 40,
+    "status": "operational"
+  },
+  {
+    "name": "Iron Mountain VA-5 (Manassas)",
+    "operator": "Iron Mountain",
+    "lat": 38.7692,
+    "lng": -77.4830,
+    "county": "Prince William",
+    "year_opened": 2022,
+    "capacity_mw": 44,
+    "status": "operational"
+  },
+  {
+    "name": "Iron Mountain VA-6 (Manassas)",
+    "operator": "Iron Mountain",
+    "lat": 38.7700,
+    "lng": -77.4800,
+    "county": "Prince William",
+    "year_opened": 2024,
+    "capacity_mw": 48,
+    "status": "under_construction"
+  },
+  {
+    "name": "Iron Mountain VA-7 (Manassas)",
+    "operator": "Iron Mountain",
+    "lat": 38.7650,
+    "lng": -77.4770,
+    "county": "Prince William",
+    "year_opened": 2025,
+    "capacity_mw": 36,
+    "status": "under_construction"
+  },
+  {
+    "name": "EdgeCore Louisa County Campus",
+    "operator": "EdgeCore",
+    "lat": 38.0250,
+    "lng": -77.9600,
+    "county": "Louisa",
+    "year_opened": 2026,
+    "capacity_mw": 300,
+    "status": "planned"
+  },
+  {
+    "name": "EdgeCore Ashburn AS01",
+    "operator": "EdgeCore",
+    "lat": 39.0070,
+    "lng": -77.4120,
+    "county": "Loudoun",
+    "year_opened": 2024,
+    "capacity_mw": 72,
+    "status": "under_construction"
+  },
+  {
+    "name": "EdgeCore Ashburn AS02",
+    "operator": "EdgeCore",
+    "lat": 39.0080,
+    "lng": -77.4130,
+    "county": "Loudoun",
+    "year_opened": 2025,
+    "capacity_mw": 42,
+    "status": "under_construction"
+  },
+  {
+    "name": "NTT/RagingWire VA1 (Ashburn)",
+    "operator": "NTT/RagingWire",
+    "lat": 39.0388,
+    "lng": -77.4680,
+    "county": "Loudoun",
+    "year_opened": 2014,
+    "capacity_mw": 13,
+    "status": "operational"
+  },
+  {
+    "name": "NTT/RagingWire VA2 (Ashburn)",
+    "operator": "NTT/RagingWire",
+    "lat": 39.0392,
+    "lng": -77.4685,
+    "county": "Loudoun",
+    "year_opened": 2017,
+    "capacity_mw": 16,
+    "status": "operational"
+  },
+  {
+    "name": "NTT/RagingWire VA3 (Ashburn)",
+    "operator": "NTT/RagingWire",
+    "lat": 39.0340,
+    "lng": -77.4550,
+    "county": "Loudoun",
+    "year_opened": 2020,
+    "capacity_mw": 16,
+    "status": "operational"
+  },
+  {
+    "name": "NTT/RagingWire VA6 (Ashburn)",
+    "operator": "NTT/RagingWire",
+    "lat": 39.0345,
+    "lng": -77.4555,
+    "county": "Loudoun",
+    "year_opened": 2023,
+    "capacity_mw": 24,
+    "status": "operational"
+  },
+  {
+    "name": "Aligned IAD-01 (Ashburn)",
+    "operator": "Aligned Data Centers",
+    "lat": 39.0415,
+    "lng": -77.4865,
+    "county": "Loudoun",
+    "year_opened": 2017,
+    "capacity_mw": 32,
+    "status": "operational"
+  },
+  {
+    "name": "Aligned IAD-02 (Ashburn)",
+    "operator": "Aligned Data Centers",
+    "lat": 39.0412,
+    "lng": -77.4870,
+    "county": "Loudoun",
+    "year_opened": 2019,
+    "capacity_mw": 24,
+    "status": "operational"
+  },
+  {
+    "name": "Aligned IAD-03 (Sterling)",
+    "operator": "Aligned Data Centers",
+    "lat": 39.0050,
+    "lng": -77.4070,
+    "county": "Loudoun",
+    "year_opened": 2022,
+    "capacity_mw": 36,
+    "status": "operational"
+  },
+  {
+    "name": "Sabey SDC Ashburn Building B",
+    "operator": "Sabey Data Centers",
+    "lat": 39.0432,
+    "lng": -77.4888,
+    "county": "Loudoun",
+    "year_opened": 2018,
+    "capacity_mw": 18,
+    "status": "operational"
+  },
+  {
+    "name": "Sabey SDC Ashburn Building C",
+    "operator": "Sabey Data Centers",
+    "lat": 39.0435,
+    "lng": -77.4892,
+    "county": "Loudoun",
+    "year_opened": 2020,
+    "capacity_mw": 18,
+    "status": "operational"
+  },
+  {
+    "name": "Sabey SDC Ashburn Building A",
+    "operator": "Sabey Data Centers",
+    "lat": 39.0429,
+    "lng": -77.4884,
+    "county": "Loudoun",
+    "year_opened": 2026,
+    "capacity_mw": 54,
+    "status": "under_construction"
+  },
+  {
+    "name": "DataBank IAD1 (Ashburn)",
+    "operator": "DataBank",
+    "lat": 39.0434,
+    "lng": -77.4896,
+    "county": "Loudoun",
+    "year_opened": 2012,
+    "capacity_mw": 10,
+    "status": "operational"
+  },
+  {
+    "name": "DataBank IAD3 (Ashburn)",
+    "operator": "DataBank",
+    "lat": 39.0437,
+    "lng": -77.4899,
+    "county": "Loudoun",
+    "year_opened": 2021,
+    "capacity_mw": 40,
+    "status": "operational"
+  },
+  {
+    "name": "H5 Data Centers (Ashburn)",
+    "operator": "H5 Data Centers",
+    "lat": 39.0428,
+    "lng": -77.4858,
+    "county": "Loudoun",
+    "year_opened": 2019,
+    "capacity_mw": 42,
+    "status": "operational"
+  },
+  {
+    "name": "Compass Loudoun County I",
+    "operator": "Compass Datacenters",
+    "lat": 39.0820,
+    "lng": -77.5300,
+    "county": "Loudoun",
+    "year_opened": 2022,
+    "capacity_mw": 75,
+    "status": "operational"
+  },
+  {
+    "name": "Flexential Richmond",
+    "operator": "Flexential",
+    "lat": 37.6280,
+    "lng": -77.4600,
+    "county": "Henrico",
+    "year_opened": 2010,
+    "capacity_mw": 8,
+    "status": "operational"
+  },
+  {
+    "name": "DataBank Culpeper (Red Ace)",
+    "operator": "DataBank",
+    "lat": 38.4740,
+    "lng": -77.9980,
+    "county": "Culpeper",
+    "year_opened": 2027,
+    "capacity_mw": 85,
+    "status": "planned"
+  },
+  {
+    "name": "EdgeCore Culpeper Campus",
+    "operator": "EdgeCore",
+    "lat": 38.4720,
+    "lng": -77.9960,
+    "county": "Culpeper",
+    "year_opened": 2026,
+    "capacity_mw": 216,
+    "status": "planned"
+  },
+  {
+    "name": "Marvell Culpeper (Stevensburg)",
+    "operator": "Marvell",
+    "lat": 38.4350,
+    "lng": -77.8960,
+    "county": "Culpeper",
+    "year_opened": 2026,
+    "capacity_mw": 135,
+    "status": "under_construction"
+  }
+]

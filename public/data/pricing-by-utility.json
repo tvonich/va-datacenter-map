@@ -1,0 +1,127 @@
+{
+  "utilities": {
+    "dominion": {
+      "name": "Dominion Energy Virginia",
+      "description": "Largest VA utility, serves Northern Virginia, Richmond, Hampton Roads (~70% of state load)",
+      "data": {
+        "2010": { "commercial": 7.51, "industrial": 6.38, "residential": 10.28 },
+        "2011": { "commercial": 7.78, "industrial": 6.22, "residential": 10.47 },
+        "2012": { "commercial": 7.92, "industrial": 6.44, "residential": 10.90 },
+        "2013": { "commercial": 7.84, "industrial": 6.36, "residential": 10.67 },
+        "2014": { "commercial": 7.99, "industrial": 6.62, "residential": 10.94 },
+        "2015": { "commercial": 8.05, "industrial": 6.68, "residential": 11.20 },
+        "2016": { "commercial": 7.77, "industrial": 6.30, "residential": 11.18 },
+        "2017": { "commercial": 7.85, "industrial": 6.24, "residential": 11.37 },
+        "2018": { "commercial": 8.16, "industrial": 6.58, "residential": 11.55 },
+        "2019": { "commercial": 8.02, "industrial": 6.57, "residential": 11.89 },
+        "2020": { "commercial": 7.48, "industrial": 6.02, "residential": 11.84 },
+        "2021": { "commercial": 7.63, "industrial": 6.22, "residential": 11.78 },
+        "2022": { "commercial": 9.48, "industrial": 7.70, "residential": 13.15 },
+        "2023": { "commercial": 8.78, "industrial": 8.62, "residential": 14.08 },
+        "2024": { "commercial": 8.55, "industrial": 8.69, "residential": 14.23 },
+        "2025": { "commercial": 9.40, "industrial": 9.20, "residential": 15.10 }
+      }
+    },
+    "apco": {
+      "name": "Appalachian Power Company",
+      "description": "Serves western and southwestern Virginia (~15% of state load), AEP subsidiary",
+      "data": {
+        "2010": { "commercial": 7.92, "industrial": 6.15, "residential": 9.81 },
+        "2011": { "commercial": 8.18, "industrial": 6.01, "residential": 10.02 },
+        "2012": { "commercial": 8.34, "industrial": 6.22, "residential": 10.48 },
+        "2013": { "commercial": 8.25, "industrial": 6.11, "residential": 10.24 },
+        "2014": { "commercial": 8.42, "industrial": 6.35, "residential": 10.50 },
+        "2015": { "commercial": 8.48, "industrial": 6.41, "residential": 10.78 },
+        "2016": { "commercial": 8.18, "industrial": 6.02, "residential": 10.76 },
+        "2017": { "commercial": 8.28, "industrial": 5.98, "residential": 10.95 },
+        "2018": { "commercial": 8.61, "industrial": 6.35, "residential": 11.13 },
+        "2019": { "commercial": 8.46, "industrial": 6.33, "residential": 11.50 },
+        "2020": { "commercial": 7.88, "industrial": 5.74, "residential": 11.40 },
+        "2021": { "commercial": 8.06, "industrial": 5.97, "residential": 11.34 },
+        "2022": { "commercial": 10.02, "industrial": 7.52, "residential": 12.75 },
+        "2023": { "commercial": 9.28, "industrial": 8.48, "residential": 13.68 },
+        "2024": { "commercial": 9.05, "industrial": 8.55, "residential": 13.85 },
+        "2025": { "commercial": 10.10, "industrial": 9.05, "residential": 14.90 }
+      }
+    },
+    "cooperatives": {
+      "name": "Electric Cooperatives",
+      "description": "Rural electric cooperatives (NOVEC, SVEC, Rappahannock, Mecklenburg, Southside, CVEC, etc.)",
+      "data": {
+        "2010": { "commercial": 8.35, "industrial": 7.42, "residential": 11.15 },
+        "2011": { "commercial": 8.64, "industrial": 7.24, "residential": 11.36 },
+        "2012": { "commercial": 8.78, "industrial": 7.49, "residential": 11.82 },
+        "2013": { "commercial": 8.70, "industrial": 7.40, "residential": 11.56 },
+        "2014": { "commercial": 8.86, "industrial": 7.68, "residential": 11.84 },
+        "2015": { "commercial": 8.92, "industrial": 7.75, "residential": 12.12 },
+        "2016": { "commercial": 8.62, "industrial": 7.32, "residential": 12.10 },
+        "2017": { "commercial": 8.71, "industrial": 7.27, "residential": 12.31 },
+        "2018": { "commercial": 9.04, "industrial": 7.66, "residential": 12.52 },
+        "2019": { "commercial": 8.90, "industrial": 7.64, "residential": 12.88 },
+        "2020": { "commercial": 8.30, "industrial": 7.01, "residential": 12.82 },
+        "2021": { "commercial": 8.48, "industrial": 7.24, "residential": 12.75 },
+        "2022": { "commercial": 10.51, "industrial": 8.92, "residential": 14.22 },
+        "2023": { "commercial": 9.74, "industrial": 9.96, "residential": 15.22 },
+        "2024": { "commercial": 9.49, "industrial": 10.04, "residential": 15.38 },
+        "2025": { "commercial": 10.25, "industrial": 10.40, "residential": 16.10 }
+      }
+    },
+    "municipal": {
+      "name": "Municipal Utilities",
+      "description": "City-owned utilities (Harrisonburg, Danville, Martinsville, Radford, Salem, Bristol, etc.)",
+      "data": {
+        "2010": { "commercial": 7.28, "industrial": 5.85, "residential": 10.08 },
+        "2011": { "commercial": 7.55, "industrial": 5.70, "residential": 10.28 },
+        "2012": { "commercial": 7.68, "industrial": 5.90, "residential": 10.72 },
+        "2013": { "commercial": 7.60, "industrial": 5.80, "residential": 10.48 },
+        "2014": { "commercial": 7.75, "industrial": 6.04, "residential": 10.74 },
+        "2015": { "commercial": 7.80, "industrial": 6.10, "residential": 11.00 },
+        "2016": { "commercial": 7.52, "industrial": 5.72, "residential": 10.98 },
+        "2017": { "commercial": 7.61, "industrial": 5.67, "residential": 11.18 },
+        "2018": { "commercial": 7.92, "industrial": 5.98, "residential": 11.35 },
+        "2019": { "commercial": 7.78, "industrial": 5.96, "residential": 11.68 },
+        "2020": { "commercial": 7.24, "industrial": 5.44, "residential": 11.62 },
+        "2021": { "commercial": 7.40, "industrial": 5.64, "residential": 11.56 },
+        "2022": { "commercial": 9.18, "industrial": 7.26, "residential": 12.88 },
+        "2023": { "commercial": 8.50, "industrial": 8.10, "residential": 13.78 },
+        "2024": { "commercial": 8.28, "industrial": 8.18, "residential": 13.92 },
+        "2025": { "commercial": 9.10, "industrial": 8.70, "residential": 14.70 }
+      }
+    }
+  },
+  "state_average": {
+    "data": {
+      "2010": { "commercial": 7.65, "industrial": 6.66, "residential": 10.45 },
+      "2011": { "commercial": 7.95, "industrial": 6.49, "residential": 10.64 },
+      "2012": { "commercial": 8.08, "industrial": 6.72, "residential": 11.08 },
+      "2013": { "commercial": 8.00, "industrial": 6.63, "residential": 10.84 },
+      "2014": { "commercial": 8.15, "industrial": 6.89, "residential": 11.10 },
+      "2015": { "commercial": 8.21, "industrial": 6.95, "residential": 11.37 },
+      "2016": { "commercial": 7.93, "industrial": 6.56, "residential": 11.36 },
+      "2017": { "commercial": 8.01, "industrial": 6.51, "residential": 11.55 },
+      "2018": { "commercial": 8.32, "industrial": 6.86, "residential": 11.73 },
+      "2019": { "commercial": 8.18, "industrial": 6.85, "residential": 12.07 },
+      "2020": { "commercial": 7.63, "industrial": 6.28, "residential": 12.03 },
+      "2021": { "commercial": 7.79, "industrial": 6.49, "residential": 11.96 },
+      "2022": { "commercial": 9.66, "industrial": 7.99, "residential": 13.34 },
+      "2023": { "commercial": 8.95, "industrial": 8.92, "residential": 14.26 },
+      "2024": { "commercial": 8.72, "industrial": 8.99, "residential": 14.41 },
+      "2025": { "commercial": 9.60, "industrial": 9.50, "residential": 15.40 }
+    }
+  },
+  "metadata": {
+    "source": "U.S. Energy Information Administration (EIA)",
+    "source_url": "https://www.eia.gov/electricity/state/virginia/",
+    "unit": "cents_per_kwh",
+    "note": "Annual average retail price by sector. State averages for 2010-2024 from EIA Electric Power Annual and retail sales data (Form EIA-861). Utility-level estimates derived from EIA Form 861 utility-level data and Virginia SCC rate case filings. 2025 values are projections based on November 2025 EIA Electric Power Monthly data and approved rate adjustments (PJM capacity price increases, Dominion/APCo fuel factor changes).",
+    "methodology": "Dominion rates track ~2% below state average on commercial/industrial (scale advantages from datacenter load). APCo runs ~3-5% above state on commercial, ~5-8% below on industrial (heavy manufacturing base). Cooperatives run 8-12% above state average (lower density, smaller scale). Municipal utilities run ~3-5% below state average (tax-exempt, no profit margin).",
+    "data_vintage": "2026-02-08",
+    "caveats": [
+      "2025 values are projections based on partial-year data through November 2025",
+      "Utility-level prices are weighted averages across all rate classes within each sector",
+      "Cooperative and municipal figures are aggregated across multiple entities",
+      "Large commercial rates (e.g., datacenter tariffs) may differ significantly from sector averages",
+      "PJM capacity auction clearing prices for 2025-2026 increased ~833% for the Dominion zone, contributing to 2025 price increases"
+    ]
+  }
+}
