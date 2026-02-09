@@ -1,6 +1,5 @@
 <script>
-  import { onMount } from 'svelte';
-  import { selectedRegion, selectedYear, pricing, visibleDatacenters, countyUtilityMap } from '../stores.js';
+  import { selectedRegion, selectedYear, pricing, datacenters, visibleDatacenters, countyUtilityMap } from '../stores.js';
   import { REGION_COLORS } from '../utils/colors.js';
   import { getUtilityPrice, countByRegion } from '../utils/data.js';
 
@@ -30,48 +29,69 @@
     return { key, region, price, industrialPrice, residentialPrice, dcCount, totalMW };
   });
 
-  // Build sparkline data for the selected region
+  const MIN_YEAR = 2010;
+  const MAX_YEAR = 2025;
+  const CHART_W = 280;
+  const CHART_H = 100;
+  const PAD = { top: 8, right: 32, bottom: 4, left: 4 };
+
+  // Build sparkline data for the selected region — price + DC count per year
   let sparklineData = $derived.by(() => {
     const key = $selectedRegion || 'dominion';
     const p = $pricing;
+    const allDCs = $datacenters;
+    const utilMap = $countyUtilityMap;
     if (!p?.utilities?.[key]?.data) return [];
 
-    return Object.entries(p.utilities[key].data)
-      .map(([year, vals]) => ({ year: Number(year), price: vals.commercial }))
-      .sort((a, b) => a.year - b.year);
+    const years = [];
+    for (let y = MIN_YEAR; y <= MAX_YEAR; y++) {
+      const price = p.utilities[key].data[y]?.commercial ?? null;
+      const regionStats = (allDCs.length && utilMap) ? countByRegion(allDCs, utilMap, y) : null;
+      years.push({
+        year: y,
+        price,
+        dcCount: regionStats?.counts?.[key] ?? 0,
+      });
+    }
+    return years;
   });
 
-  let sparklinePath = $derived.by(() => {
-    if (!sparklineData.length) return '';
-    const width = 280;
-    const height = 80;
-    const pad = 4;
-    const prices = sparklineData.map(d => d.price);
+  // Scales shared across path builders
+  let scales = $derived.by(() => {
+    if (!sparklineData.length) return null;
+    const prices = sparklineData.map(d => d.price).filter(p => p != null);
+    const counts = sparklineData.map(d => d.dcCount);
     const minP = Math.min(...prices) - 0.5;
     const maxP = Math.max(...prices) + 0.5;
-    const xScale = (i) => pad + (i / (sparklineData.length - 1)) * (width - 2 * pad);
-    const yScale = (p) => height - pad - ((p - minP) / (maxP - minP)) * (height - 2 * pad);
+    const maxC = Math.max(...counts, 1);
+    const plotW = CHART_W - PAD.left - PAD.right;
+    const plotH = CHART_H - PAD.top - PAD.bottom;
 
-    return sparklineData.map((d, i) =>
-      `${i === 0 ? 'M' : 'L'} ${xScale(i).toFixed(1)} ${yScale(d.price).toFixed(1)}`
-    ).join(' ');
+    return {
+      x: (i) => PAD.left + (i / (sparklineData.length - 1)) * plotW,
+      yPrice: (p) => PAD.top + plotH - ((p - minP) / (maxP - minP)) * plotH,
+      yCount: (c) => PAD.top + plotH - (c / maxC) * plotH,
+      minP, maxP, maxC, plotH, plotW,
+    };
   });
 
-  let sparklineArea = $derived.by(() => {
-    if (!sparklineData.length) return '';
-    const width = 280;
-    const height = 80;
-    const pad = 4;
-    const prices = sparklineData.map(d => d.price);
-    const minP = Math.min(...prices) - 0.5;
-    const maxP = Math.max(...prices) + 0.5;
-    const xScale = (i) => pad + (i / (sparklineData.length - 1)) * (width - 2 * pad);
-    const yScale = (p) => height - pad - ((p - minP) / (maxP - minP)) * (height - 2 * pad);
+  let pricePath = $derived.by(() => {
+    if (!scales) return { line: '', area: '' };
+    const pts = sparklineData
+      .map((d, i) => d.price != null ? { x: scales.x(i), y: scales.yPrice(d.price) } : null)
+      .filter(Boolean);
+    if (!pts.length) return { line: '', area: '' };
+    const line = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(' ');
+    const area = `${line} L ${pts[pts.length - 1].x.toFixed(1)} ${CHART_H - PAD.bottom} L ${pts[0].x.toFixed(1)} ${CHART_H - PAD.bottom} Z`;
+    return { line, area };
+  });
 
-    const linePart = sparklineData.map((d, i) =>
-      `${i === 0 ? 'M' : 'L'} ${xScale(i).toFixed(1)} ${yScale(d.price).toFixed(1)}`
-    ).join(' ');
-    return `${linePart} L ${xScale(sparklineData.length - 1).toFixed(1)} ${height - pad} L ${pad} ${height - pad} Z`;
+  let dcCountPath = $derived.by(() => {
+    if (!scales) return { line: '', area: '' };
+    const pts = sparklineData.map((d, i) => ({ x: scales.x(i), y: scales.yCount(d.dcCount) }));
+    const line = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(' ');
+    const area = `${line} L ${pts[pts.length - 1].x.toFixed(1)} ${CHART_H - PAD.bottom} L ${pts[0].x.toFixed(1)} ${CHART_H - PAD.bottom} Z`;
+    return { line, area };
   });
 
   function selectRegion(key) {
@@ -120,30 +140,40 @@
     </div>
 
     <div class="chart-section">
-      <h4>Commercial Rate Trend</h4>
+      <div class="chart-header">
+        <h4>Rate vs. Datacenter Growth</h4>
+        <div class="chart-legend">
+          <span class="legend-item"><span class="legend-swatch" style="background: {regionData.region?.base || '#3b82f6'}"></span>¢/kWh</span>
+          <span class="legend-item"><span class="legend-swatch" style="background: var(--accent-cyan)"></span>DCs</span>
+        </div>
+      </div>
       <div class="sparkline-container" bind:this={chartContainer}>
-        <svg viewBox="0 0 280 80" class="sparkline-svg">
-          {#if sparklineArea}
-            <path d={sparklineArea} fill={regionData.region?.base || '#3b82f6'} opacity="0.15" />
-            <path d={sparklinePath} fill="none" stroke={regionData.region?.base || '#3b82f6'} stroke-width="2" />
+        <svg viewBox="0 0 {CHART_W} {CHART_H}" class="sparkline-svg">
+          {#if scales}
+            <!-- DC count area + line (behind price) -->
+            <path d={dcCountPath.area} fill="var(--accent-cyan)" opacity="0.08" />
+            <path d={dcCountPath.line} fill="none" stroke="var(--accent-cyan)" stroke-width="1.5" opacity="0.5" stroke-dasharray="3 2" />
+
+            <!-- Price area + line -->
+            <path d={pricePath.area} fill={regionData.region?.base || '#3b82f6'} opacity="0.15" />
+            <path d={pricePath.line} fill="none" stroke={regionData.region?.base || '#3b82f6'} stroke-width="2" />
+
+            <!-- Current year indicators -->
+            {#each sparklineData as d, i}
+              {#if d.year === $selectedYear}
+                {#if d.price != null}
+                  <circle cx={scales.x(i)} cy={scales.yPrice(d.price)} r="4"
+                    fill={regionData.region?.base || '#3b82f6'} stroke="white" stroke-width="1.5" />
+                {/if}
+                <circle cx={scales.x(i)} cy={scales.yCount(d.dcCount)} r="3"
+                  fill="var(--accent-cyan)" stroke="white" stroke-width="1" />
+              {/if}
+            {/each}
+
+            <!-- Right axis labels for DC count -->
+            <text x={CHART_W - 2} y={PAD.top + 3} text-anchor="end" class="axis-label" fill="var(--accent-cyan)">{scales.maxC}</text>
+            <text x={CHART_W - 2} y={CHART_H - PAD.bottom - 2} text-anchor="end" class="axis-label" fill="var(--accent-cyan)">0</text>
           {/if}
-          {#each sparklineData as d, i}
-            {#if d.year === $selectedYear}
-              <circle
-                cx={4 + (i / (sparklineData.length - 1)) * 272}
-                cy={(() => {
-                  const prices = sparklineData.map(s => s.price);
-                  const minP = Math.min(...prices) - 0.5;
-                  const maxP = Math.max(...prices) + 0.5;
-                  return 80 - 4 - ((d.price - minP) / (maxP - minP)) * 72;
-                })()}
-                r="4"
-                fill={regionData.region?.base || '#3b82f6'}
-                stroke="white"
-                stroke-width="1.5"
-              />
-            {/if}
-          {/each}
         </svg>
         <div class="sparkline-labels">
           <span>2010</span>
@@ -279,13 +309,45 @@
     margin-bottom: 1rem;
   }
 
-  .chart-section h4 {
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+  }
+
+  .chart-header h4 {
     font-size: 0.65rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--text-muted);
-    margin-bottom: 0.4rem;
+  }
+
+  .chart-legend {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .legend-swatch {
+    width: 8px;
+    height: 3px;
+    border-radius: 1px;
+  }
+
+  .axis-label {
+    font-size: 7px;
+    font-family: var(--font-mono);
+    opacity: 0.7;
   }
 
   .sparkline-container {

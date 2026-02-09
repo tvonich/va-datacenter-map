@@ -8,7 +8,31 @@ export async function loadAllData() {
     fetch(`${BASE}data/county-to-utility.json`).then(r => r.json()),
   ]);
 
-  return { counties, datacenters: dcs, pricing: pricingData, countyUtilityMap: utilityMap };
+  return { counties, datacenters: spreadOverlappingMarkers(dcs), pricing: pricingData, countyUtilityMap: utilityMap };
+}
+
+// Spread markers that are too close together so they don't overlap at high zoom
+function spreadOverlappingMarkers(dcs, minDist = 0.002) {
+  const result = dcs.map(dc => ({ ...dc }));
+  // Group by proximity — O(n²) but n≈113 so fine
+  for (let i = 0; i < result.length; i++) {
+    for (let j = i + 1; j < result.length; j++) {
+      const a = result[i], b = result[j];
+      const dx = a.lng - b.lng;
+      const dy = a.lat - b.lat;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < minDist && dist > 0) {
+        // Push apart along the vector between them, or a random direction if coincident
+        const angle = dist > 0.00001 ? Math.atan2(dy, dx) : (Math.PI * 2 * j) / result.length;
+        const push = (minDist - dist) / 2;
+        a.lng += Math.cos(angle) * push;
+        a.lat += Math.sin(angle) * push;
+        b.lng -= Math.cos(angle) * push;
+        b.lat -= Math.sin(angle) * push;
+      }
+    }
+  }
+  return result;
 }
 
 // Enrich GeoJSON counties with utility assignment

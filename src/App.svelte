@@ -8,6 +8,7 @@
   import RegionPanel from './components/RegionPanel.svelte';
   import Header from './components/Header.svelte';
   import Legend from './components/Legend.svelte';
+  import IntroOverlay from './components/IntroOverlay.svelte';
 
   let loading = $state(true);
   let error = $state(null);
@@ -45,6 +46,7 @@
     </div>
   </div>
 {:else}
+  <IntroOverlay />
   <div class="app-layout">
     <Header />
 
