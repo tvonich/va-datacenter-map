@@ -1,9 +1,11 @@
+const BASE = import.meta.env.BASE_URL;
+
 export async function loadAllData() {
   const [counties, dcs, pricingData, utilityMap] = await Promise.all([
-    fetch('/data/virginia-counties.geojson').then(r => r.json()),
-    fetch('/data/datacenters.json').then(r => r.json()),
-    fetch('/data/pricing-by-utility.json').then(r => r.json()),
-    fetch('/data/county-to-utility.json').then(r => r.json()),
+    fetch(`${BASE}data/virginia-counties.geojson`).then(r => r.json()),
+    fetch(`${BASE}data/datacenters.json`).then(r => r.json()),
+    fetch(`${BASE}data/pricing-by-utility.json`).then(r => r.json()),
+    fetch(`${BASE}data/county-to-utility.json`).then(r => r.json()),
   ]);
 
   return { counties, datacenters: dcs, pricing: pricingData, countyUtilityMap: utilityMap };
