@@ -2,6 +2,20 @@
 
 ## Recent Changes
 
+### Session 2 (2026-02-09) — Cloudflare Migration + Mobile Responsiveness + Social Metadata
+- Migrated hosting from GitHub Pages to Cloudflare Pages (removes GitHub username from URL)
+- Set up GitHub Actions auto-deploy to Cloudflare Pages on push to main
+- Fixed Vite `base` path from `/va-datacenter-map/` to `/` for Cloudflare root serving
+- Added mobile responsiveness: slide-out sidebar drawer (≤900px), bottom bar vertical stacking (≤600px), collapsible legend, viewport-clamped tooltips with touch support, tap-to-view on map markers
+- Added Open Graph + Twitter Card meta tags with generated OG preview image (1200x630 PNG)
+- Disabled GitHub Pages on the repo
+
+**Commits:**
+- `cefb762` — Switch deploy from GitHub Pages to Cloudflare Pages
+- `886cc63` — Fix base path for Cloudflare Pages
+- `e0a47a8` — Add mobile responsiveness
+- `92008ec` — Add Open Graph and Twitter Card meta tags
+
 ### Session 1 (2026-02-08/09) — Initial Build + Feature Polish
 - Scaffolded Svelte 5 + Vite project with MapLibre GL JS
 - Compiled 113-facility datacenter dataset, EIA pricing data (4 utilities, 2010-2025), VA county GeoJSON
@@ -23,8 +37,8 @@
 
 ## Branch State
 
-- **Main**: `15398ad` (Add intro overlay, dual-axis trend chart, and marker spread)
-- **Live site**: https://tvonich.github.io/va-datacenter-map/ (deployed from main)
+- **Main**: `92008ec` (Add Open Graph and Twitter Card meta tags)
+- **Live site**: https://va-datacenter-map.pages.dev/ (Cloudflare Pages, deployed from main via GitHub Actions)
 
 ## Active Work
 
@@ -33,7 +47,6 @@ None — session complete.
 ## Known Limitations / Future Work
 
 - Bundle size warning: 1.1 MB uncompressed (~315 KB gzip). Could optimize with dynamic imports if needed.
-- No mobile-specific layout tweaks yet (sidebar hidden on <900px, but map interactions are desktop-optimized).
 - Coordinate jitter algorithm is O(n²) but acceptable for n≈113 facilities.
 - Pricing data currently static (2010-2025); could integrate live EIA API for updates.
 
@@ -42,4 +55,6 @@ None — session complete.
 - Intro overlay uses Svelte 5 runes (`$state`); initial visibility controlled by local state, not a store (dismissal is session-only, not persisted).
 - Dual-axis chart scales independently: left axis (¢/kWh) auto-scales to price range, right axis (DC count) scales to max for region.
 - Marker spread runs on data load, modifying original coordinates slightly — all adjustments <0.001° to keep markers recognizable.
-- GitHub Pages deployment via Actions workflow: pushes to main trigger auto-build + deploy to `https://tvonich.github.io/va-datacenter-map/`.
+- Cloudflare Pages deployment via GitHub Actions: pushes to main trigger build + `wrangler pages deploy` to `https://va-datacenter-map.pages.dev/`.
+- Cloudflare API token stored as GitHub secret `CLOUDFLARE_API_TOKEN`; account ID as `CLOUDFLARE_ACCOUNT_ID`.
+- OG image generated with Pillow (not hand-designed); replace `public/og-image.png` with a screenshot for better social previews.

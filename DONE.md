@@ -12,3 +12,11 @@
 - ✅ Dual-axis chart: electricity rate + DC count per year (2026-02-09)
 - ✅ Marker spread: jitter overlapping coordinates (2026-02-09)
 - ✅ GitHub Pages deployment: auto-deploy from main branch (2026-02-08)
+
+## Session 2 (2026-02-09)
+
+- ✅ Cloudflare Pages migration: username-free URL at va-datacenter-map.pages.dev (2026-02-09)
+- ✅ GitHub Actions auto-deploy to Cloudflare Pages on push to main (2026-02-09)
+- ✅ Mobile responsiveness: sidebar drawer, bottom bar stacking, collapsible legend, touch tooltips, tap-to-view markers (2026-02-09)
+- ✅ Open Graph + Twitter Card social preview metadata with generated OG image (2026-02-09)
+- ✅ GitHub Pages disabled (2026-02-09)

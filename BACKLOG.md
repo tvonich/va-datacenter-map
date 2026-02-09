@@ -2,7 +2,6 @@
 
 ## Priority 1 (High Impact, Ready to Implement)
 
-- **Mobile layout refinements** — Optimize sidebar and controls for tablets/phones; test touch interactions on map
 - **Live pricing API integration** — Replace static pricing JSON with EIA Form 861 live data fetch (quarterly updates)
 - **Datacenter detail modal** — Click marker → show full facility details (operator, address, PUE, cooling tech, customer list if public)
 
