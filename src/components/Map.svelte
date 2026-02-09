@@ -216,6 +216,30 @@
       hoveredDatacenter.set(null);
     });
 
+    // Tap on marker (mobile touch support)
+    map.on('click', 'dc-markers', (e) => {
+      if (e.features?.length) {
+        const props = e.features[0].properties;
+        hoveredDatacenter.set({
+          name: props.name,
+          operator: props.operator,
+          county: props.county,
+          year_opened: props.year_opened,
+          capacity_mw: props.capacity_mw,
+          status: props.status,
+        });
+        hoveredRegion.set(null);
+      }
+    });
+
+    // Clear tooltip on map tap outside markers
+    map.on('click', (e) => {
+      const features = map.queryRenderedFeatures(e.point, { layers: ['dc-markers'] });
+      if (!features.length) {
+        hoveredDatacenter.set(null);
+      }
+    });
+
     // Cluster hover
     map.on('mouseenter', 'dc-clusters', () => {
       map.getCanvas().style.cursor = 'pointer';

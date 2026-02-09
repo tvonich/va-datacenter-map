@@ -4,19 +4,42 @@
 
   let x = $state(0);
   let y = $state(0);
+  let tooltipEl = $state(null);
+  let clearTimer = null;
 
-  function handleMouseMove(e) {
-    x = e.clientX;
-    y = e.clientY;
+  function updatePosition(cx, cy) {
+    const pad = 8;
+    const tipW = tooltipEl?.offsetWidth || 280;
+    const tipH = tooltipEl?.offsetHeight || 120;
+    x = Math.min(cx + 14, window.innerWidth - tipW - pad);
+    y = Math.max(pad, Math.min(cy - 10, window.innerHeight - tipH - pad));
   }
 
-  // Attach a global listener
+  function handleMouseMove(e) {
+    updatePosition(e.clientX, e.clientY);
+  }
+
+  function handleTouchStart(e) {
+    if (e.touches.length) {
+      updatePosition(e.touches[0].clientX, e.touches[0].clientY);
+    }
+    if (clearTimer) clearTimeout(clearTimer);
+    clearTimer = setTimeout(() => {
+      hoveredDatacenter.set(null);
+      hoveredRegion.set(null);
+    }, 3000);
+  }
+
+  // Attach global listeners
   import { onMount, onDestroy } from 'svelte';
   onMount(() => {
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
   });
   onDestroy(() => {
     window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('touchstart', handleTouchStart);
+    if (clearTimer) clearTimeout(clearTimer);
   });
 
   let show = $derived($hoveredDatacenter || $hoveredRegion);
@@ -25,7 +48,8 @@
 {#if show}
   <div
     class="tooltip"
-    style="left: {x + 14}px; top: {y - 10}px;"
+    bind:this={tooltipEl}
+    style="left: {x}px; top: {y}px;"
   >
     {#if $hoveredDatacenter}
       <div class="tooltip-header">

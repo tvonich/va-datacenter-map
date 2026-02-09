@@ -111,4 +111,13 @@
     font-size: 0.65rem;
     color: var(--text-muted);
   }
+
+  @media (max-width: 600px) {
+    .card {
+      padding: 1.5rem 1.25rem;
+      margin: 1rem;
+    }
+    h2 { font-size: 1.15rem; }
+    p { font-size: 0.8rem; }
+  }
 </style>

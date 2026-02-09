@@ -1,10 +1,28 @@
 <script>
+  import { onMount } from 'svelte';
   import { REGION_COLORS } from '../utils/colors.js';
 
   const regions = Object.entries(REGION_COLORS);
+  let collapsed = $state(false);
+  let isMobile = $state(false);
+
+  onMount(() => {
+    const mq = window.matchMedia('(max-width: 600px)');
+    isMobile = mq.matches;
+    collapsed = mq.matches;
+    const handler = (e) => { isMobile = e.matches; if (e.matches) collapsed = true; else collapsed = false; };
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  });
 </script>
 
-<div class="legend">
+<div class="legend" class:collapsed>
+  {#if isMobile}
+    <button class="legend-toggle" onclick={() => collapsed = !collapsed}>
+      Legend {collapsed ? '▸' : '▾'}
+    </button>
+  {/if}
+  <div class="legend-body">
   <div class="legend-section">
     <h4>Utility Regions</h4>
     {#each regions as [key, color]}
@@ -38,6 +56,7 @@
       <div class="opacity-gradient"></div>
       <span class="opacity-label">High rate</span>
     </div>
+  </div>
   </div>
 </div>
 
@@ -113,5 +132,45 @@
   .opacity-label {
     font-size: 0.58rem;
     color: var(--text-muted);
+  }
+
+  .legend-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    padding: 0;
+    font-family: var(--font-sans);
+  }
+
+  .legend-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow: hidden;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
+  }
+
+  @media (max-width: 600px) {
+    .legend-toggle {
+      display: block;
+    }
+    .legend.collapsed .legend-body {
+      max-height: 0;
+      opacity: 0;
+      margin: 0;
+    }
+    .legend:not(.collapsed) .legend-body {
+      max-height: 300px;
+      opacity: 1;
+    }
+    .legend.collapsed {
+      padding: 0.4rem 0.6rem;
+    }
   }
 </style>

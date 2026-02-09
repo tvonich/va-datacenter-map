@@ -13,6 +13,7 @@
   let loading = $state(true);
   let error = $state(null);
   let enrichedCounties = $state(null);
+  let sidebarOpen = $state(false);
 
   onMount(async () => {
     try {
@@ -55,11 +56,26 @@
         <Map counties={enrichedCounties} />
         <Tooltip />
         <Legend />
+        <button class="mobile-info-btn" onclick={() => sidebarOpen = true} title="Region details">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+          </svg>
+        </button>
       </div>
 
-      <div class="sidebar">
+      <div class="sidebar" class:desktop-sidebar={true}>
         <RegionPanel />
       </div>
+
+      {#if sidebarOpen}
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <!-- svelte-ignore a11y_no_static_element_interactions -->
+        <div class="drawer-backdrop" onclick={() => sidebarOpen = false}></div>
+        <div class="drawer">
+          <button class="drawer-close" onclick={() => sidebarOpen = false}>&times;</button>
+          <RegionPanel />
+        </div>
+      {/if}
     </div>
 
     <div class="bottom-bar">
@@ -187,14 +203,114 @@
     margin-top: 2px;
   }
 
+  /* Mobile info button — visible only when sidebar is hidden */
+  .mobile-info-btn {
+    display: none;
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: var(--accent-cyan);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    transition: all 0.15s;
+    padding: 0;
+  }
+  .mobile-info-btn:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.25);
+  }
+
+  /* Drawer (mobile sidebar) */
+  .drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 499;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
+  .drawer {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 340px;
+    max-width: 85vw;
+    z-index: 500;
+    background: var(--bg-secondary);
+    border-left: 1px solid var(--border-color);
+    overflow-y: auto;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.25s ease;
+  }
+  @keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+  .drawer-close {
+    position: sticky;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    float: right;
+    margin: 0.5rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  .drawer-close:hover {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
   @media (max-width: 900px) {
-    .sidebar {
+    .desktop-sidebar {
       display: none;
+    }
+    .mobile-info-btn {
+      display: flex;
     }
     .summary-stats {
       gap: 1rem;
     }
     .stat { min-width: 60px; }
     .stat-value { font-size: 1rem; }
+  }
+
+  @media (max-width: 600px) {
+    .bottom-bar {
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+    }
+    .summary-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      width: 100%;
+    }
+    .stat {
+      min-width: 0;
+    }
+    .stat-value { font-size: 0.9rem; }
+    .stat-label { font-size: 0.55rem; }
   }
 </style>
